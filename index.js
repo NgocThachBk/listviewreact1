@@ -10,6 +10,7 @@ import BasicListItem from './component/BasicListItem';
 import BrandOneItem from './component/BrandOneItem';
 import FavoritePlace from './component/FavoritePlace';
 import Search from './component/Search';
+import ImagePickerProject from './component/ImageInput';
 //import TabNavigatorBottom from './component/NavigationBottom';
 
 import { TabNavigator,createMaterialTopTabNavigator,createStackNavigator,createAppContainer } from 'react-navigation';
@@ -22,6 +23,9 @@ const RootStack = createMaterialTopTabNavigator( {
   },
   SearchScreen: {
     screen: Search,
+  },
+  Add:{
+    screen:ImagePickerProject,
   },
   Heart: {
     screen: FavoritePlace,
@@ -42,7 +46,7 @@ const RootStack = createMaterialTopTabNavigator( {
       swipeEnabled: true,
 
       style:{
-        backgroundColor:'white'
+        backgroundColor:'white',
       }
     },
   }
