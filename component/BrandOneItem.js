@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { AppRegistry,ListView, Text, View, Image, StyleSheet,FlatList,Button,Icon,TouchableOpacity } from 'react-native';
+import { AppRegistry,ListView, Text, View, Image, StyleSheet,FlatList,Button,TouchableOpacity } from 'react-native';
 import branditem from '../data/branditem';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 
 class FlatListItem extends Component{
@@ -121,7 +122,10 @@ class FlatListItem extends Component{
   });
 
 
-export default class BasicListItem extends Component{
+export default class BrandOneItem extends Component{
+
+
+
   render(){
     return (
       <View style = {{flex: 1 , marginTop: 22}} >
@@ -146,4 +150,15 @@ export default class BasicListItem extends Component{
       </View>
     );
   }
+}
+
+
+BrandOneItem.navigationOptions = {
+  tabBarIcon : ({focused}) => (
+    <Icon
+      name = "user-o"
+      size = {25}
+      color = {focused ? "blue" : "black"}
+    />
+  )
 }

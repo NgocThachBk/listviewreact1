@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { AppRegistry,ListView, Text, View, Image, StyleSheet,FlatList,Button,Icon,TouchableOpacity } from 'react-native';
+import { AppRegistry,ListView, Text, View, Image, StyleSheet,FlatList,Button,TouchableOpacity } from 'react-native';
 import branditem from '../data/branditem';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 
 class FlatListItem extends Component{
@@ -113,7 +114,10 @@ class FlatListItem extends Component{
   });
 
 
-export default class BasicListItem extends Component{
+export default class FavoritePlace extends Component{
+
+
+
   render(){
     return (
       <View style = {{flex: 1 , marginTop: 22}} >
@@ -135,4 +139,15 @@ export default class BasicListItem extends Component{
       </View>
     );
   }
+}
+
+
+FavoritePlace.navigationOptions = {
+  tabBarIcon : ({focused}) => (
+    <Icon
+      name = "md-heart-empty"
+      size = {30}
+      color = {focused ? "blue" : "black"}
+    />
+  )
 }

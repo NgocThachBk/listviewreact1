@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { AppRegistry,ListView, Text, View, Image, StyleSheet,FlatList,Button,Icon,TouchableOpacity } from 'react-native';
+import { AppRegistry,ListView, Text, View, Image, StyleSheet,FlatList,Button,TouchableOpacity } from 'react-native';
 import flatListData from '../data/flatListData';
+import Icon from 'react-native-vector-icons/AntDesign';
 
 
 class FlatListItem extends Component{
@@ -85,6 +86,7 @@ class FlatListItem extends Component{
 
 
 export default class BasicListItem extends Component{
+
   render(){
     return (
       <View style = {{flex: 1 , marginTop: 22}} >
@@ -106,4 +108,13 @@ export default class BasicListItem extends Component{
       </View>
     );
   }
+}
+BasicListItem.navigationOptions = {
+  tabBarIcon : ({focused}) => (
+    <Icon
+      name = "home"
+      size = {25}
+      color = {focused ? "blue" : "black"}
+    />
+  )
 }
