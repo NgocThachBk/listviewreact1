@@ -3,6 +3,8 @@ import { TextInput,AppRegistry,ListView, Text, View, Image, StyleSheet,FlatList,
 import branditem from '../data/branditem';
 import FlatListItem from '../component/ItemListMore';
 import Icon from 'react-native-vector-icons/Ionicons';
+import FilterPlace from '../screen/FilterPlace';
+import { TabNavigator,createMaterialTopTabNavigator,createStackNavigator,createAppContainer } from 'react-navigation';
 
 
   const styles = StyleSheet.create({
@@ -64,58 +66,57 @@ import Icon from 'react-native-vector-icons/Ionicons';
       alignItems: 'center',
       marginLeft: 10,
       marginRight: 10,
-      marginTop: 20,
+      marginTop: 15,
       borderBottomWidth:1,
       borderBottomColor:'gray',
-      paddingBottom: 15
+      paddingBottom: 10
     }
   });
 
 
-export default class Search extends Component{
-
+export default class Search extends Component<Props>{
 
   render(){
     return (
       <View style = {{flex: 1 , marginTop: 22}} >
         <View style = {styles.searchStyle}>
-        <TouchableOpacity style = {styles.searchIcon}>
+        <TouchableOpacity  style = {styles.searchIcon}>
           <Image source = {{uri:'https://www.iconsdb.com/icons/preview/gray/search-3-xl.png'}} style = {styles.searchIconImage}></Image>
         </TouchableOpacity>
         <TextInput style = {styles.inputStyle}
           placeholder = "Nhập Địa Điểm"/>
-        <TouchableOpacity >
+        <TouchableOpacity onPress = {() => this.props.navigation.navigate('Details')} >
           <Image source = {{uri:'https://img.icons8.com/ios/2x/filter.png'}} style = {styles.filterIconImage}></Image>
         </TouchableOpacity>
         </View>
 
-        <Text style = {{fontSize:25,fontWeight:'bold',color:'black',marginLeft:20,marginTop:20,marginBottom:10}}>Tìm Kiếm Hàng Đầu</Text>
+        <Text style = {{fontFamily: "MontserratBlack",fontSize:22,fontWeight:'bold',color:'black',marginLeft:20,marginTop:20,marginBottom:10}}>Tìm Kiếm Hàng Đầu</Text>
 
         <View style = {styles.popularSerachStyle}>
-          <Text style = {{fontSize:18,fontWeight:'bold',color:'black'}}> Lipstick & Perfume </Text>
-          <Text style = {{fontSize:18}}> Nữ </Text>
+          <Text style = {{fontFamily: "MontserratBlack",fontSize:15,fontWeight:'bold',color:'black'}}> Lipstick & Perfume </Text>
+          <Text style = {{fontFamily: "MontserratBlack",fontSize:15}}> Nữ </Text>
           <TouchableOpacity style = {{marginLeft:'auto'}}>
             <Image source = {{uri:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAvesWi4SF1MHGmazBIuQTwUGwW9kBy1xLdrd-vBjfvwmjbQuw'}} style = {styles.filterIconImage}></Image>
           </TouchableOpacity>
         </View>
 
         <View style = {styles.popularSerachStyle}>
-          <Text style = {{fontSize:18,fontWeight:'bold',color:'black'}}> Lipstick & Perfume </Text>
-          <Text style = {{fontSize:18}}> Nữ </Text>
+          <Text style = {{fontFamily: "MontserratBlack",fontSize:15,fontWeight:'bold',color:'black'}}> Lipstick & Perfume </Text>
+          <Text style = {{fontFamily: "MontserratBlack",fontSize:15}}> Nữ </Text>
           <TouchableOpacity style = {{marginLeft:'auto'}}>
             <Image source = {{uri:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAvesWi4SF1MHGmazBIuQTwUGwW9kBy1xLdrd-vBjfvwmjbQuw'}} style = {styles.filterIconImage}></Image>
           </TouchableOpacity>
         </View>
 
         <View style = {styles.popularSerachStyle}>
-          <Text style = {{fontSize:18,fontWeight:'bold',color:'black'}}> Lipstick & Perfume </Text>
-          <Text style = {{fontSize:18}}> Nữ </Text>
+          <Text style = {{fontFamily: "MontserratBlack",fontSize:15,fontWeight:'bold',color:'black'}}> Lipstick & Perfume </Text>
+          <Text style = {{fontFamily: "MontserratBlack",fontSize:15}}> Nữ </Text>
           <TouchableOpacity style = {{marginLeft:'auto'}}>
             <Image source = {{uri:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAvesWi4SF1MHGmazBIuQTwUGwW9kBy1xLdrd-vBjfvwmjbQuw'}} style = {styles.filterIconImage}></Image>
           </TouchableOpacity>
         </View>
 
-        <Text style = {{fontSize:25,fontWeight:'bold',color:'black',marginLeft:10,marginTop:30}}>Địa Điểm Nổi Tiếng</Text>
+        <Text style = {{fontFamily: "MontserratBlack",fontSize:20,fontWeight:'bold',color:'black',marginLeft:10,marginTop:30}}>Địa Điểm Nổi Tiếng</Text>
 
 
         <FlatList style = {styles.listStyle}
@@ -129,14 +130,4 @@ export default class Search extends Component{
       </View>
     );
   }
-}
-
-Search.navigationOptions = {
-  tabBarIcon : ({focused}) => (
-    <Icon
-      name = "md-search"
-      size = {30}
-      color = {focused ? "blue" : "black"}
-    />
-  )
 }

@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
-import {  AppRegistry,ListView, Text, View, Image, StyleSheet,FlatList,Button,TouchableOpacity } from 'react-native';
+import { ScrollView,TextInput, AppRegistry,ListView, Text, View, Image, StyleSheet,FlatList,Button,TouchableOpacity } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
 import Icon from 'react-native-vector-icons/AntDesign';
 import imageAdd from '../data/imageAdd';
+import TextField from '../component/common/TextField/TextField';
 
 
 
 
 const styles = StyleSheet.create({
+  inputMargin : {
+    marginTop: 30
+  },
   imageItem:{
     height:130,
     width:100,
@@ -23,6 +27,7 @@ const styles = StyleSheet.create({
     marginRight: 15
   },
   listStyle:{
+    height:280,
     marginLeft: 10,
     marginRight: 10,
     marginTop: 30
@@ -41,6 +46,25 @@ const styles = StyleSheet.create({
   imageIcon:{
     height:50,
     width:50,
+  },
+  titleStyle:{
+    fontFamily: "MontserratMedium",
+    fontSize: 12,
+    color: "#333",
+    marginLeft: 36,
+    width: "10%",
+    borderBottomColor: "black",
+    borderBottomWidth:1,
+    marginTop: 30
+  },
+  inputMota: {
+    width: "80%",
+    alignSelf: "center",
+    borderWidth: 1,
+    borderColor: "black",
+    borderRadius: 10,
+    height: 200,
+    marginTop:30
   }
 });
 
@@ -49,7 +73,9 @@ const styles = StyleSheet.create({
 
 
 export default class ImagePickerProject extends React.Component {
-
+  state = {
+    text: ''
+  };
 
   render() {
 
@@ -67,7 +93,51 @@ export default class ImagePickerProject extends React.Component {
           );
         }}>
         </FlatList>
+        <ScrollView style = {{}}>
+        <View >
+          <View style = {styles.inputMargin}>
+            <TextField
+              title = "Khoảng Cách"
+              placeholder = ""
+              value = {this.state.text}
+              onChangeText={(text) => this.setState({text})}
+            >
+            </TextField>
+          </View>
+          <View style = {styles.inputMargin}>
+            <TextField
+              title = "Thể Loại"
+              placeholder = ""
+              value = {this.state.text}
+              onChangeText={(text) => this.setState({text})}
+            >
+            </TextField>
+          </View>
+          <View style = {styles.inputMargin}>
+            <TextField
+              title = "Đánh Giá"
+              placeholder = ""
+              value = {this.state.text}
+              onChangeText={(text) => this.setState({text})}
+            >
+            </TextField>
+          </View>
+          <View style = {styles.inputMargin}>
+            <TextField
+              title = "Thời gian đang mở cửa"
+              placeholder = ""
+              value = {this.state.text}
+              onChangeText={(text) => this.setState({text})}
+            >
+            </TextField>
+          </View>
+          <View style = {styles.container}>
+            <Text style = {styles.titleStyle} >Mô Tả</Text>
 
+            <TextInput style = {styles.inputMota}/>
+          </View>
+        </View>
+</ScrollView>
       </View>
     );
   }

@@ -25,7 +25,8 @@ import Icon from 'react-native-vector-icons/AntDesign';
   const styles = StyleSheet.create({
     headerStyle:{
       flexDirection: 'row',
-      justifyContent: 'center'
+      justifyContent: 'center',
+      alignItems: 'center'
     },
     closeIcon:{
       width: 20,

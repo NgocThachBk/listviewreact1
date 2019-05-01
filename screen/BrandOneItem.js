@@ -54,7 +54,8 @@ import FlatListItem from '../component/ItemListMore';
     headerStyle:{
       flexDirection: 'row',
       justifyContent: 'center',
-      alignItems: 'center'
+      alignItems: 'center',
+      fontFamily: "MontserratBlack"
     },
     closeIcon:{
       width: 20,

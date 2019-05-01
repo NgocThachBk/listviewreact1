@@ -30,17 +30,20 @@ const styles = StyleSheet.create({
     color: 'black',
     marginTop: 5,
     marginLeft: 15,
-    fontSize: 15
+    fontSize: 15,
+    fontFamily: "MontserratSemiBold"
   },
   brandStyle:{
     marginLeft: 15,
     marginTop: 5,
-    fontSize: 12
+    fontSize: 12,
+    fontFamily: "MontserratLight"
   },
   detailStyle:{
     marginTop: 5,
     marginLeft: 15,
-    fontSize: 15
+    fontSize: 15,
+    fontFamily: "MontserratMedium"
   },
 });
 

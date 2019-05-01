@@ -25,7 +25,8 @@ import Icon from 'react-native-vector-icons/Ionicons';
       fontSize:20,
       fontWeight: 'bold',
       marginLeft: 25,
-      color: 'black'
+      color: 'black',
+      fontFamily: "MontserratBlack"
     },
     headerIcon:{
       marginLeft:'auto',

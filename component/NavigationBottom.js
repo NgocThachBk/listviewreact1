@@ -3,18 +3,21 @@ import { TextInput,AppRegistry,ListView, Text, View, Image, StyleSheet,FlatList,
 import BasicListItem from '../screen/BasicListItem';
 import BrandOneItem from '../screen/BrandOneItem';
 import FavoritePlace from '../screen/FavoritePlace';
-import Search from '../screen/Search';
+//import Search from '../screen/Search';
 import ImagePickerProject from '../screen/ImageInput';
+import CreateNavi from '../screen/CreateNavi';
 import { TabNavigator,createMaterialTopTabNavigator,createStackNavigator,createAppContainer } from 'react-navigation';
 
 import {Home,SearchScreen,Heart,User} from '../data/screenName';
+//import AppNavigator from '../screen/Search';
+
 
 const RootStack = createMaterialTopTabNavigator( {
   Home: {
     screen: BasicListItem,
   },
   SearchScreen: {
-    screen: Search,
+    screen: CreateNavi,
   },
   Add:{
     screen:ImagePickerProject,

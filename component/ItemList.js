@@ -18,11 +18,14 @@ const styles = StyleSheet.create({
   nameStyle:{
     fontWeight: 'bold',
     marginTop: 5,
-    marginLeft: 15
+    marginLeft: 15,
+    fontFamily: "MontserratSemiBold",
+    color:"black"
   },
   brandStyle:{
     marginLeft: 15,
-    marginTop: 15
+    marginTop: 15,
+    fontFamily: "MontserratSemiBold"
   },
   shadowImage:{
     width: 100,
