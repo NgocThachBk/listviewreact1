@@ -3,6 +3,7 @@ import { AppRegistry,ListView, Text, View, Image, StyleSheet,FlatList,Button,Tou
 import flatListData from '../data/flatListData';
 import FlatListItem from '../component/ItemList';
 import Icon from 'react-native-vector-icons/AntDesign';
+import { TabNavigator,createMaterialTopTabNavigator,createStackNavigator,createAppContainer } from 'react-navigation';
 
 
 // class FlatListItem extends Component{
@@ -59,21 +60,35 @@ import Icon from 'react-native-vector-icons/AntDesign';
 
 export default class BasicListItem extends Component{
 
+
+
   render(){
+    var dataShow ;
+    var textSearch = "Thương Hiệu nổi tiếng";
+    var dataReceive = this.props.navigation.getParam('dataSend', "");
+    if(dataReceive != ""){
+      dataShow = dataReceive;
+      textSearch = this.props.navigation.getParam('textSearch', "");
+    }
+    else{
+      dataShow = flatListData;
+    }
     return (
       <View style = {{flex: 1 , marginTop: 22}} >
         <View style = {styles.headerStyle}>
-          <Text style = {styles.headerText}>Thương Hiệu Nổi Tiếng</Text>
-          <TouchableOpacity style = {styles.headerIcon}>
+          <Text style = {styles.headerText}>{textSearch}</Text>
+          <TouchableOpacity style = {styles.headerIcon} onPress = {() => this.props.navigation.goBack(null)}>
             <Image source = {{uri:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlK_z4_pdETl1TTOl6Jy1pmtZnegrVIeFMXH5JZNWb_eQm-mo5'}} style = {styles.closeIcon}></Image>
           </TouchableOpacity>
         </View>
         <Text style = {styles.lineStyle}></Text>
         <FlatList style = {styles.listStyle}
-        data = {flatListData}
+        data = {dataShow}
         renderItem = {({item,index}) => {
           return(
-            <FlatListItem item = {item} index= {index}></FlatListItem>
+
+            <FlatListItem item = {item} index= {index} navigation={this.props.navigation}></FlatListItem>
+
           );
         }}>
         </FlatList>

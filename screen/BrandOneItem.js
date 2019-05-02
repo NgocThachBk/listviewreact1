@@ -3,6 +3,7 @@ import { AppRegistry,ListView, Text, View, Image, StyleSheet,FlatList,Button,Tou
 import branditem from '../data/branditem';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import FlatListItem from '../component/ItemListMore';
+import { TabNavigator,createMaterialTopTabNavigator,createStackNavigator,createAppContainer } from 'react-navigation';
 
 
 // class FlatListItem extends Component{
@@ -91,20 +92,32 @@ export default class BrandOneItem extends Component{
 
 
   render(){
+    var urlImageTitle = 'https://i2.wp.com/www.vietcv.net/wp-content/uploads/2018/04/Phuc-long.png?resize=945%2C675';
+    var namePlace = "xxx";
+    var dataShow ;
+    var dataReceive = this.props.navigation.getParam('dataSend', "");
+    if(dataReceive != ""){
+      dataShow = dataReceive;
+      namePlace = this.props.navigation.getParam('namePlace', "");
+      urlImageTitle = this.props.navigation.getParam('urlImage', "");
+    }
+    else{
+      dataShow = branditem;
+    }
     return (
       <View style = {{flex: 1 , marginTop: 22}} >
         <View style = {styles.headerStyle}>
           <View style = {styles.shadowImageHeader}>
-            <Image source = {{uri:'https://i2.wp.com/www.vietcv.net/wp-content/uploads/2018/04/Phuc-long.png?resize=945%2C675'}} style = {styles.imageStyleHeader}></Image>
+            <Image source = {{uri: urlImageTitle}} style = {styles.imageStyleHeader}></Image>
           </View>
-          <Text style = {styles.headerText}>PHÚC LONG</Text>
-          <TouchableOpacity style = {styles.headerIcon}>
+          <Text style = {styles.headerText}>{namePlace}</Text>
+          <TouchableOpacity style = {styles.headerIcon} onPress = {() => this.props.navigation.goBack(null)}>
             <Image source = {{uri:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlK_z4_pdETl1TTOl6Jy1pmtZnegrVIeFMXH5JZNWb_eQm-mo5'}} style = {styles.closeIcon}></Image>
           </TouchableOpacity>
         </View>
         <Text style = {styles.lineStyle}></Text>
         <FlatList style = {styles.listStyle}
-        data = {branditem}
+        data = {dataShow}
         renderItem = {({item,index}) => {
           return(
             <FlatListItem item = {item} index= {index}></FlatListItem>

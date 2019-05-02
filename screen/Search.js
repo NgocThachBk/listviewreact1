@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { TextInput,AppRegistry,ListView, Text, View, Image, StyleSheet,FlatList,Button,TouchableOpacity } from 'react-native';
 import branditem from '../data/branditem';
+import flatListData from '../data/flatListData';
 import FlatListItem from '../component/ItemListMore';
 import Icon from 'react-native-vector-icons/Ionicons';
 import FilterPlace from '../screen/FilterPlace';
@@ -76,15 +77,46 @@ import { TabNavigator,createMaterialTopTabNavigator,createStackNavigator,createA
 
 export default class Search extends Component<Props>{
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      typedText:''
+    };
+  }
+
   render(){
+    var listSearch = new Array();
+    var textInputed = '';
     return (
       <View style = {{flex: 1 , marginTop: 22}} >
         <View style = {styles.searchStyle}>
-        <TouchableOpacity  style = {styles.searchIcon}>
+        <TouchableOpacity  style = {styles.searchIcon} onPress = {() => {
+          textInputed = this.state.typedText;
+          if(textInputed != ''){
+            for(var i = 0; i < flatListData.length;i++){
+              if(flatListData[i].name.toLowerCase().indexOf(textInputed.toLowerCase()) != -1){
+                listSearch.push(flatListData[i]);
+              }
+            }
+            this.props.navigation.navigate('ShowBrand',{dataSend:listSearch,textSearch:textInputed});
+          }
+        }} >
           <Image source = {{uri:'https://www.iconsdb.com/icons/preview/gray/search-3-xl.png'}} style = {styles.searchIconImage}></Image>
         </TouchableOpacity>
         <TextInput style = {styles.inputStyle}
-          placeholder = "Nhập Địa Điểm"/>
+          placeholder = "Nhập Địa Điểm"
+          onChangeText = {
+            (text) => {
+              this.setState(
+                (previousState) => {
+                  return {
+                    typedText: text
+                  };
+                }
+              );
+            }
+          }
+          />
         <TouchableOpacity onPress = {() => this.props.navigation.navigate('Details')} >
           <Image source = {{uri:'https://img.icons8.com/ios/2x/filter.png'}} style = {styles.filterIconImage}></Image>
         </TouchableOpacity>
